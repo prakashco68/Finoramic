@@ -1,0 +1,76 @@
+#Author : Prakash Kothapalli 
+import itertools
+def closest_number(stuff,target):
+    
+    l2=[]
+    l3=[]
+    l4=[]
+    l5=[]
+    l6=[]
+    l7=[]
+    
+    positive=[]
+    
+    #creating sets using combinations from itertools module
+    for subset in itertools.combinations(stuff, 3):
+        
+        l2.append(subset)
+    
+    
+    #Adding sets
+    for i in l2:
+        l3.append((i[0])+(i[1])+(i[2]))
+    
+    #If negative numbers exists, seperating negative numbers
+    
+    for i in l3:
+        if(str(i)[0]=="-"):
+            
+            l4.append(i)
+        else:
+            positive.append(i)
+            
+ 
+    
+    
+    # if both negative and closest numbers are present, closest positive number
+    if(len(positive)==len(l3)):
+        for i in positive:
+            l7.append((target+i))
+       
+    
+        tar_close=min(l7)
+        for i in range(0,len(l7)):
+            if(l7[i]==tar_close):
+                pos_index=i
+        
+        for i in range(0,len(l3)):
+            if(l3[i]==positive[pos_index]):
+                print("closest 3 digits to target and closest number is ",l2[i],l3[i])
+                
+    #if only negative numbers are present, then finding closest negative number to target        
+    if(len(l3)==len(l4)):
+        for i in l4:
+            l5.append((i-target))
+        s=max(l5)
+        for i in range(0,len(l5)):
+            if(l5[i]==s):
+                neg_index=i
+        print("nearest negative number to target is ",s,l2[neg_index])
+    
+    elif(len(l3)!=len(l4)):
+        for i in positive:
+            l6.append((target+i))
+        
+    
+        tar_close=min(l6)
+        for i in range(0,len(l6)):
+            if(l6[i]==tar_close):
+                pos_index=i
+        
+        for i in range(0,len(l3)):
+            if(l3[i]==positive[pos_index]):
+                print("closest 3 digits to target and closest number is ",l2[i],l3[i])
+        
+
+obj1=closest_number([-1,2,1,-4],1)
