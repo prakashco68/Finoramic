@@ -1,0 +1,29 @@
+#!/usr/bin/python
+
+#Author : Prakash Kothapalli
+
+#Creating a function anagram_func
+def anagram_func(list1):
+#Initializing list2
+    list2=[]
+
+#comparing list1 each value with other values(value is reversed)
+    for i in range(0,len(list1)):
+        for j in range(0,len(list1)):
+#Used negative slicing to reverse the element
+            if(list1[i]==list1[j][::-1]):
+                list2.append([i+1,j+1])
+    
+#Removing duplicates
+
+    for i in list2:
+        for j in list2:
+            if(i==j[::-1]):
+                list2.remove(j)
+#Returning the result with index as 1 not as 0 as mentioned in question
+    return(list2)
+
+#Initializing list1
+list1=["cat","dog","tac","god"]
+obj1=anagram_func(list1)
+print obj1
