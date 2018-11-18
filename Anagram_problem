@@ -2,6 +2,9 @@
 
 #Author : Prakash Kothapalli
 
+#Question : Given an array of strings, return all groups of strings that are anagrams. Represent a group by a list of integers representing the index in the original list. Look at the sample case for clarification.
+
+
 #Creating a function anagram_func
 def anagram_func(list1):
 #Initializing list2
