@@ -1,0 +1,58 @@
+#!/usr/bin/python
+
+#Author : Prakash Kothapalli
+
+#Question: Write a program to validate if the input string has redundant braces?
+
+#Answer:
+
+#Defining a function to check redundant braces
+
+def redundant_braces(braceinput):
+    
+    print(braceinput)
+    a=braceinput.count("(")
+    b=braceinput.count(")")
+    count=0
+    for i in range(0,len(braceinput)-2):
+
+#Checks braces equality : no of open braces = no of closed braces
+
+        if(a==b):
+# if the braces are cool, then it proceeds to further validation
+
+            if(braceinput[i]=="("):
+                if(braceinput[i+1]=="("):
+                    count+=1
+    
+    
+                elif(braceinput[i+2]==")"):
+                    count+=1
+                    
+            elif(braceinput[i]=="+"):
+                if(braceinput[i+1]=="("):
+                    if(braceinput[i+3]=="+"):
+                        count+=1
+                    elif(braceinput[i+2]=="+"):
+                        count+=1
+            elif(braceinput[i]=="-"):
+                if(braceinput[i+1]=="("):
+                    if(braceinput[i+3]=="-"):
+                        count+=1
+                        
+            elif(braceinput[i]=="*"):
+                if(braceinput[i+1]=="("):
+                    if(braceinput[i+3]=="*"):
+                        count+=1
+        else:
+            count+=1
+
+    if(count>0):
+        return 1
+    else:
+        return 0
+    
+    
+
+obj1=redundant_braces("(a+(a+b))")
+print(obj1)
